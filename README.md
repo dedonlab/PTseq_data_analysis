@@ -66,35 +66,33 @@ lzma v4.32.7 https://sourceforge.net/projects/lzma/
 5. Modify trim.sh with ${path_to_your_bbmap}
 6. Run the scripts in the following order:
 
-    1) trim reads
+    \1) trim reads
    
     \# RAM >= 50G is required. For real PT-seq dataset, we recommond thread >= 10.
-   
-    `bash 
-    sh trim.sh demo/demo_1.fastq demo/demo_2.fastq job_demo`
+
+    <pre><code>sh trim.sh demo/demo_1.fastq demo/demo_2.fastq job_demo</code></pre>
 
     The output files for the next step are trimmed reads: job_demo_R1_final.fastq job_demo_R2_final.fastq. The output files also include intermediate .fq files and QC report files.
 
-    2) map reads to genome, identify pileups and extract sequences at pileup site with 6 flanking nt.
+    \2) map reads to genome, identify pileups and extract sequences at pileup site with 6 flanking nt.
     input: reference genome, trimmed reads, job name
    
-   `bash 
-   sh main.sh demo/UYXE01.1.fsa demo/demo_1.fastq demo/demo_2.fastq demo`
+   <pre><code>sh main.sh demo/UYXE01.1.fsa demo/demo_1.fastq demo/demo_2.fastq demo`
 
     The output files for the next step are tab delimited .txt files: dome_pileup_dep0_F.pos.txt and demo_pileup_dep0_R.pos.txt The columnns are:
    
     scaffold id, chromosome position of pileup, coverage, pileup depth, depth to coverage ratio, sequence (6 flank nt)
    
-   `sh pos2seq_R.sh`
+   <pre><code>sh pos2seq_R.sh</code></pre>
    
-   `sh mergepileup.sh`
+   <pre><code>sh mergepileup.sh</code></pre>
    
-   `sh meme.sh`
+   <pre><code>sh meme.sh</code></pre>
    
-   `sh motif_stat.sh`
+   <pre><code>sh motif_stat.sh</code></pre>
    
-   `sh pileup_to_gffClass.sh`
+   <pre><code>sh pileup_to_gffClass.sh</code></pre>
    
-   `sh summary_geneClass.sh`
+   <pre><code>sh summary_geneClass.sh</code></pre>
    
-   `sh gene_class_summary.sh`
+   <pre><code>sh gene_class_summary.sh</code></pre>
