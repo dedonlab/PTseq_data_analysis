@@ -37,7 +37,7 @@ samtools view -b -@ $t -f 147 -o ${bam_R} $bam_clean
 
 dir_o=.
 
-# identify pileups
+# identify pileups for R and F strand separately.
 PAIRS=(F R)
 
 for pair in ${PAIRS[*]} ; do
@@ -108,3 +108,10 @@ awk '{print $1,$2}' $Rpos | while read a b; do
   samtools faidx -c $genome ${a}:${posl}-${posr} | grep -v '^>' >> ${seq_out}.tmp
 done
 paste -d ' ' $plup ${seq_out}.tmp > ${seq_out}
+
+# Merge file of F R strand.
+# extract sequences from txt file to .fasta format.
+awk '{print ">"$1"_"$2"\n"$6}' ${Fpos}.txt > ${sample}_pileup_dep0.fasta
+
+awk '{print ">"$1"_"$2"\n"$6}' ${Rpos}.txt >> ${sample}_pileup_dep0.fasta
+
