@@ -77,7 +77,7 @@ lzma v4.32.7 https://sourceforge.net/projects/lzma/
     \2) map reads to genome, identify pileups and extract sequences at pileup site with 6 flanking nt.
     input: reference genome, trimmed reads, job name
    
-   <pre><code>sh main.sh demo/UYXE01.1.fsa demo/demo_1.fastq demo/demo_2.fastq demo`
+   <pre><code>sh main.sh demo/UYXE01.1.fsa demo/demo_1.fastq demo/demo_2.fastq demo</code></pre>
 
     The output files for the next step are tab delimited .txt files: dome_pileup_dep0_F.pos.txt and demo_pileup_dep0_R.pos.txt The columnns are:
    
