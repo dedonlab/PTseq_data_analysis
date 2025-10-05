@@ -70,11 +70,13 @@ lzma v4.32.7 https://sourceforge.net/projects/lzma/
    
     `bash sh trim.sh demo/demo_1.fastq demo/demo_2.fastq job_demo`
 
-The output files for the next step are trimmed reads: job_demo_R1_final.fastq job_demo_R2_final.fastq. The output files also include intermediate .fq files and QC report files.
+    The output files for the next step are trimmed reads: job_demo_R1_final.fastq job_demo_R2_final.fastq. The output files also include intermediate .fq files and QC report files.
    
    `bash sh main.sh demo/UYXE01.1.fsa demo/demo_1.fastq demo/demo_2.fastq `
-The output files for the next step are tab delimited .txt files: dome_pileup_dep0_F.pos.txt and demo_pileup_dep0_R.pos.txt The columnns are:
-scaffold id, chromosome position of pileup, coverage, pileup depth, depth to coverage ratio, sequence (6 flank nt)
+
+    The output files for the next step are tab delimited .txt files: dome_pileup_dep0_F.pos.txt and demo_pileup_dep0_R.pos.txt The columnns are:
+   
+    scaffold id, chromosome position of pileup, coverage, pileup depth, depth to coverage ratio, sequence (6 flank nt)
    
    `sh pos2seq_R.sh`
    
