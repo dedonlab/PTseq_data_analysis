@@ -1,44 +1,38 @@
 #!/bin/bash
-lst_g=$1
-N=$(wc -l $lst_g | cut -d' ' -f1)
-dir_p=$(cd "$(dirname "$2")"; pwd -P)/$(basename "$2")
-dir_meme=${dir_p}/memetmp
-mkdir $dir_meme || true
-sample=$3
-#sample=$(basename "$3" | awk -F '[_.]' '{print $1}')
+
+# dependence
+# seqkit
+# meme v5.3.3
+# meme required modules
+# perl recommend version 5.18.2
+# automake recommend version 1.15
+# autoconf recommend version 2.69
+# python recommend version 3.5.2
+# zlib recommend version 1.2.11
+# jdk recommend version 1.8.0
+# zlib recommend version 1.2.11
+# xz recommend version 5.2.3
+# lzma recommend version 4.32.7
+# export TZ='EST' date
+# ghostscript recommend version 9.52
+
+mkdir meme || true
+
+fas=$1
+fas8=${file%.fasta}_min8.fasta
 
 flank=6
 flnk2=$(($flank+$flank+1))
 
-#### meme required modules
-perlbrew init
-perlbrew use perl-5.18.2
+# remove short sequences <=8.
+# remove short squeuences, meme require >= 8
+# dreme require same length
 
-module add c3ddb/automake/1.15
-module add c3ddb/autoconf/2.69
-module add c3ddb/python/3.5.2
-module add c3ddb/zlib/1.2.11
-module add c3ddb/jdk/1.8.0-101
-module add c3ddb/zlib/1.2.11 ; module add c3ddb/xz/5.2.3 ; module add c3ddb/lzma/4.32.7
-#export TZ='EST' date
-export PATH=/scratch/users/yfyuan/bin/ghostscript-9.52/bin:$PATH
-export PATH=/scratch/users/yfyuan/bin/meme-5.3.3/bin:/scratch/users/yfyuan/bin/meme-5.3.3/libexec/meme-5.3.3:$PATH
+seqkit seq -m 8 ${fas} > ${fas8}
 
-#### MAIN ####
-#<<'####'
-for file in $(cat $lst_g) ; do
-  #  # remove short squeuences, meme require >= 8
-  #  # dreme require same lengtn
-    /scratch/users/yfyuan/bin/seqkit/seqkit seq -m 8 $file > ${file}min8
-done
+# meme.
+# -cefrac 0.8 not used with classic mode
+meme -dna -objfun classic -nmotifs 10 -mod zoops -evt 0.05 -time 3000 -minw 3 -maxw 5 -markov_order 0 -nostatus -oc meme ${fas8}
 
-####
-
-#<<'####'
-for file in $(cat $lst_g) ; do
-  # meme.
-  # -cefrac 0.8 not used with classic mode
-  meme -dna -objfun classic -nmotifs 10 -mod zoops -evt 0.05 -time 3000 -minw 3 -maxw 5 -markov_order 0 -nostatus -oc ${dir_meme} ${file}min8
-  mv "$dir_meme"/meme.txt "$dir_p"/meme_"$(basename ${file}|cut -d'.' -f1)".txt
-  >&2 echo "$file"
-done
+# rename file
+mv meme/meme.txt meme/"$(basename ${fas}|cut -d'.' -f1)".txt
