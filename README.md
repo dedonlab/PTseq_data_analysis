@@ -76,7 +76,7 @@ lzma v4.32.7 https://sourceforge.net/projects/lzma/
 
     The output files for the next step are trimmed reads: `job_demo_R1_final.fastq` and `job_demo_R2_final.fastq`. The output files also include intermediate .fq files and QC report files.
 
-    2) map reads to genome, identify pileups and extract sequences at pileup site with 6 flanking nt.
+    2\) map reads to genome, identify pileups and extract sequences at pileup site with 6 flanking nt.
     input: reference genome, trimmed reads, job name
    
    <pre><code>sh main.sh demo/UYXE01.1.fsa demo/demo_1.fastq demo/demo_2.fastq demo</code></pre>
@@ -86,14 +86,21 @@ lzma v4.32.7 https://sourceforge.net/projects/lzma/
    
     scaffold id, chromosome position of pileup, coverage, pileup depth, depth to coverage ratio, sequence (6 flank nt)
    
-   <pre><code>sh mergepileup.sh</code></pre>
+   3\) identify conserved motifs using MEME-suit. Input file `dome_pileup_dep0.fasta`. Output: meme/dome_pileup_dep0.txt`
    
    <pre><code>sh meme.sh</code></pre>
+
+   4\) merge pileup sites.
+
+   <pre><code>sh mergepileup.sh</code></pre>
+
+   5\) calculate the number of pileups.
    
    <pre><code>sh motif_stat.sh</code></pre>
+
+   6\) Summarize the number of pileups per gene class.
    
    <pre><code>sh pileup_to_gffClass.sh</code></pre>
    
    <pre><code>sh summary_geneClass.sh</code></pre>
    
-   <pre><code>sh gene_class_summary.sh</code></pre>
