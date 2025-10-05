@@ -21,6 +21,7 @@ Linux: Centos 7
 macOS: Mojave (10.14.1)
 
 ## Installation and dependences
+## The software/tools below should be installed and added to your system’s `PATH` so that it can be invoked from the command line.
 bbmap https://archive.jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/installation-guide/
 
 fastqc v0.11.8 https://github.com/s-andrews/FastQC
@@ -33,6 +34,7 @@ bedtools v2.30.0 https://github.com/arq5x/bedtools2/releases
 
 SMARTcleaner-master https://github.com/dzhaobio/SMARTcleaner
 
+seqkit https://bioinf.shenwei.me/seqkit/
 
 MEME-suit v5.3.3 #Please follow the instructions of the MEME suite via its website at http://meme-suite.org
 
@@ -66,24 +68,23 @@ lzma v4.32.7 https://sourceforge.net/projects/lzma/
 5. Modify trim.sh with ${path_to_your_bbmap}
 6. Run the scripts in the following order:
 
-    \1) trim reads
+    1\) trim reads
    
     \# RAM >= 50G is required. For real PT-seq dataset, we recommond thread >= 10.
 
     <pre><code>sh trim.sh demo/demo_1.fastq demo/demo_2.fastq job_demo</code></pre>
 
-    The output files for the next step are trimmed reads: job_demo_R1_final.fastq job_demo_R2_final.fastq. The output files also include intermediate .fq files and QC report files.
+    The output files for the next step are trimmed reads: `job_demo_R1_final.fastq` and `job_demo_R2_final.fastq`. The output files also include intermediate .fq files and QC report files.
 
-    \2) map reads to genome, identify pileups and extract sequences at pileup site with 6 flanking nt.
+    2) map reads to genome, identify pileups and extract sequences at pileup site with 6 flanking nt.
     input: reference genome, trimmed reads, job name
    
    <pre><code>sh main.sh demo/UYXE01.1.fsa demo/demo_1.fastq demo/demo_2.fastq demo</code></pre>
 
-    The output files for the next step are tab delimited .txt files: dome_pileup_dep0_F.pos.txt and demo_pileup_dep0_R.pos.txt The columnns are:
+    The output files for the next step are fasta file of pileups before filter: `dome_pileup_dep0.fasta` 
+   and tab delimited .txt files: `dome_pileup_dep0_F.pos.txt` and `demo_pileup_dep0_R.pos.txt`. The columnns are:
    
     scaffold id, chromosome position of pileup, coverage, pileup depth, depth to coverage ratio, sequence (6 flank nt)
-   
-   <pre><code>sh pos2seq_R.sh</code></pre>
    
    <pre><code>sh mergepileup.sh</code></pre>
    
