@@ -98,13 +98,17 @@ lzma v4.32.7 https://sourceforge.net/projects/lzma/
 
    <pre><code>sh mergepileup.sh</code></pre>
 
+   The output file is a tab delimited txt file with columns: scaffold, genome position, coverage, depth of read 2, depth-to-coverage ratio, sequence with 6-nt flanking, strand, motif.
+
    5\) calculate the number of pileups.
    
    <pre><code>sh motif_stat.sh</code></pre>
+
+   The output file is a txt file with motifs such as, CAG, CCA, GATC/GATC, GAAC/GTTC, and corresponding number of modified motif sites.
 
    6\) Summarize the number of pileups per gene class.
    
    <pre><code>sh pileup_to_gffClass.sh</code></pre>
    
    <pre><code>sh summary_geneClass.sh</code></pre>
-   
+   The output file is a table of gene class (CDS, rRNA, tRNA) and corresponding number of total motif sites and modified motif sites.
