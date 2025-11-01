@@ -22,7 +22,7 @@ macOS: Mojave (10.14.1)
 
 ## Installation and dependences
 ## The software/tools below should be installed and added to your system’s `PATH` so that it can be invoked from the command line.
-bbmap https://archive.jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/installation-guide/
+bbmap v35.85 https://archive.jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/installation-guide/
 
 fastqc v0.11.8 https://github.com/s-andrews/FastQC
 
