@@ -32,9 +32,9 @@ samtools v1.19.2 https://github.com/samtools/samtools/releases/
 
 bedtools v2.30.0 https://github.com/arq5x/bedtools2/releases
 
-SMARTcleaner-master https://github.com/dzhaobio/SMARTcleaner
+SMARTcleaner-master v1.0 https://github.com/dzhaobio/SMARTcleaner
 
-seqkit https://bioinf.shenwei.me/seqkit/
+seqkit v2.1.0 https://bioinf.shenwei.me/seqkit/
 
 MEME-suit v5.3.3 #Please follow the instructions of the MEME suite via its website at http://meme-suite.org
 
