@@ -36,6 +36,8 @@ SMARTcleaner-master v1.0 https://github.com/dzhaobio/SMARTcleaner
 
 seqkit v2.1.0 https://bioinf.shenwei.me/seqkit/
 
+## The installation time for tools above should be no more than 1 hour.
+
 MEME-suit v5.3.3 #Please follow the instructions of the MEME suite via its website at http://meme-suite.org
 
 Dependences for MEME-suit v5.3.3
@@ -59,6 +61,8 @@ zlib v1.2.11 https://github.com/jrmwng/zlib-1.2.11
 xz v5.2.3 https://github.com/tukaani-project/xz/releases
 
 lzma v4.32.7 https://sourceforge.net/projects/lzma/
+
+## Depending on the environment of the system, the installation time for MEME-suite can be from less than 1 hour to about 3 hours.
 
 ## Usage
 1. install the dependences
